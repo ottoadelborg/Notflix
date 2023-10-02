@@ -1,5 +1,11 @@
+import Navbar from "../Components/Navbar";
+
 function Home() {
-  return <p>hej</p>;
+  return (
+    <>
+      <Navbar />
+    </>
+  );
 }
 
 export default Home;
