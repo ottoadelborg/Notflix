@@ -21,6 +21,8 @@ function RecomendedMovies() {
       </article>
     </section>
   );
+function RecomendedMovies() {
+  return <section>RecomendedMoviess</section>;
 }
 
 export default RecomendedMovies;
