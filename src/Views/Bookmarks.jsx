@@ -1,5 +1,11 @@
+import Navbar from "../Components/Navbar";
+
 function Bookmarks() {
-  return <p>mega</p>;
+  return (
+    <>
+      <Navbar />
+    </>
+  );
 }
 
 export default Bookmarks;
