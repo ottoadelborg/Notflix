@@ -25,9 +25,13 @@ function Categories() {
     setGenre(genreArray);
   }, []);
 
-  const test = genre.map((gen) => {
+  const test = genre.map((gen, index) => {
     return (
-      <button className="button" onClick={() => setFilmCategory(gen)}>
+      <button
+        key={index}
+        className="button"
+        onClick={() => setFilmCategory(gen)}
+      >
         {gen}
       </button>
     );
