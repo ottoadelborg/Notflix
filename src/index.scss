@@ -2,11 +2,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Hind+Vadodara:wght@300&display=swap");
 @import "./Style/variables";
 
-#root {
-  max-width: 1280px;
+* {
+  background-color: $background;
+}
+/* #root {
+  max-width: 100vh;
   min-width: 320px;
   min-height: 100vh;
-}
+} */
 
 // Stora bokstäver font Titel
 //font-family: 'Bebas Neue', sans-serif;
