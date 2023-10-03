@@ -1,5 +1,4 @@
 import { useState } from "react";
-import CategoryButtons from "../Components/CategoryButtons";
 import movies from "../assets/movies.json";
 import "../Style/Categories.scss";
 import Navbar from "../Components/Navbar";
@@ -21,8 +20,6 @@ function Categories() {
   return (
     <div className="category-page">
       <Navbar />
-
-      <CategoryButtons />
 
       <div className="movie-list">{test}</div>
     </div>
