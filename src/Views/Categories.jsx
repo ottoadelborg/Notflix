@@ -25,9 +25,13 @@ function Categories() {
     setGenre(genreArray);
   }, []);
 
-  const test = genre.map((gen) => {
+  const test = genre.map((gen, index) => {
     return (
-      <button className="button" onClick={() => setFilmCategory(gen)}>
+      <button
+        key={index}
+        className="button"
+        onClick={() => setFilmCategory(gen)}
+      >
         {gen}
       </button>
     );
@@ -42,7 +46,8 @@ function Categories() {
           className="movie-show"
           onClick={() => {
             navigate("/Notflix/film-view", { state: { movie } });
-          }}>
+          }}
+        >
           <img src={movie.thumbnail} alt="No img exist" />
           <p> {movie.title}</p>
         </div>
