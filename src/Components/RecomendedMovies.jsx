@@ -1,6 +1,6 @@
 import movies from "../assets/movies.json";
-import "../Style/RecomendedMovies.scss";
 import CaroselMovie from "./CaroselMovie";
+import "../Style/RecomendedMovies.scss";
 
 function RecomendedMovies() {
   const RandomMovies = [];
