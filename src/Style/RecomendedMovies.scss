@@ -1,0 +1,11 @@
+@import "./variables";
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+.recommendedMovies {
+  display: flex;
+  flex-direction: column;
+  font-family: "Bebas Neue", sans-serif;
+  width: 100%;
+  background-color: $background;
+  color: $fontColor;
+}

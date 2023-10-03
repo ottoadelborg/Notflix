@@ -1,5 +1,10 @@
+import Navbar from "../Components/Navbar";
 function Categories() {
-  return <p>mule</p>;
+  return (
+    <>
+      <Navbar />
+    </>
+  );
 }
 
 export default Categories;
