@@ -1,13 +1,18 @@
-/* import { describe, it, expect } from "vitest";
+import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 
+import { BrowserRouter } from "react-router-dom";
+
 import Home from "../Views/Home";
-//import Navbar from "../Components/Navbar";
 
 describe("Navbar", () => {
-  it("renders navigation-links", () => {
-    render(<Home />);
-    expect(screen.getByRole)("Home").toBeInTheDocument();
+  it("should render navigation links", () => {
+    render(
+      <BrowserRouter>
+        <Home />
+      </BrowserRouter>
+    );
+    const homeLink = screen.getByRole("link", { name: "Home" });
+    expect(homeLink).toBeInTheDocument();
   });
 });
- */
