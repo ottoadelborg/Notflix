@@ -1,0 +1,36 @@
+@import "./variables";
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+.filmview {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: $background;
+  color: $fontColor;
+}
+
+.filmview__img {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5rem;
+  width: 450px;
+  padding: 1rem;
+}
+
+.filmview__poster {
+  border-radius: 0.5rem;
+  border: 2px solid black;
+}
+
+.filmview__title {
+  text-align: center;
+  font-family: "Bebas Neue", sans-serif;
+}
+
+.filmview__details {
+  width: 350px;
+  padding: 1rem;
+}
