@@ -4,7 +4,6 @@ import { useLocation } from "react-router-dom";
 
 function FilmView() {
   const { state } = useLocation();
-  console.log(state);
 
   return (
     <section>
