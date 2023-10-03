@@ -1,0 +1,28 @@
+@import "./variables";
+body {
+  background-color: $backround;
+  width: 100%;
+  height: 100vh;
+  color: white;
+  .category-page {
+    .movie-list {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+  }
+  .movie-show {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+
+    img {
+      height: auto;
+      width: auto;
+      max-width: 300px;
+      max-height: 300px;
+      border-radius: 10px;
+    }
+  }
+}
