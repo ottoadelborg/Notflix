@@ -21,7 +21,6 @@ function FilmView() {
       <Navbar />
       <section className="filmview">
         <section className="filmview__img">
-          <h2 className="filmview__title">{movie.title}</h2>
           {
             <img
               className="filmview__poster"
@@ -30,6 +29,7 @@ function FilmView() {
             />
           }
           <section className="filmview__details">
+            <h2 className="filmview__title">{movie.title}</h2>
             <h3>{movie.year}</h3>
             <p>
               <strong>Rating:</strong> {movie.rating}
