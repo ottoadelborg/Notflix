@@ -39,10 +39,11 @@ function Categories() {
 
   console.log(genre);
 
-  const content = movies?.map((movie) => {
+  const content = movies?.map((movie, idx) => {
     if (movie.genre.includes(filmCategory)) {
       return (
         <div
+          key={idx}
           className="movie-show"
           onClick={() => {
             navigate("/Notflix/film-view", { state: { movie } });

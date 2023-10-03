@@ -1,8 +1,7 @@
 import Input from "../Components/Input";
 import Navbar from "../Components/Navbar";
-import RecomendedMovies from "../Components/RecomendedMovies";
 import "../Style/Input.scss";
-import Test from "../Components/test";
+import Recommended from "../Components/Recommended";
 import "../Style/Home.scss";
 
 function Home() {
@@ -10,8 +9,7 @@ function Home() {
     <div className="search--movie__container">
       <Navbar />
       <Input />
-      <RecomendedMovies />
-      <Test />
+      <Recommended />
     </div>
   );
 }
