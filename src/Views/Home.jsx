@@ -3,6 +3,9 @@ import ShowHomeMovie from "../Components/ShowHomeMovie";
 import movies from "../assets/movies.json";
 import "../Style/Input.scss";
 import { useState } from "react";
+import RecomendedMovies from "../Components/RecomendedMovies";
+import Navbar from "../Components/Navbar";
+import "../Style/Home.scss";
 
 function Home() {
   const [searchMovie, setSearchMovie] = useState("");
@@ -19,7 +22,9 @@ function Home() {
 
   return (
     <div className="search--movie__container">
+      <Navbar />
       <Input setSearchMovie={setSearchMovie} handleClick={handleClick} />
+      <RecomendedMovies />
       <ShowHomeMovie title={data[0]?.title} thumbnail={data[0]?.thumbnail} />
     </div>
   );

@@ -1,0 +1,23 @@
+@import "./variables";
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+.navbar {
+  display: flex;
+  background-color: $background;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 80px;
+}
+
+.navbar__links {
+  color: $fontColor;
+  text-decoration: none;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  font-family: "Bebas Neue", sans-serif;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 25px;
+  font-weight: 500;
+}

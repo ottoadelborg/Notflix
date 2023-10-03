@@ -1,5 +1,11 @@
+import Navbar from "../Components/Navbar";
+
 function FilmView() {
-  return <p>yo</p>;
+  return (
+    <>
+      <Navbar />
+    </>
+  );
 }
 
 export default FilmView;
