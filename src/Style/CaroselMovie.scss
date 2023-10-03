@@ -1,7 +1,7 @@
 .carosellMovie {
-  width: 100%;
-
-  &__img {
-    width: 100%;
-  }
+  max-width: 100%;
+  display: flex;
+}
+img {
+  max-width: 100%;
 }

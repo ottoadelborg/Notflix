@@ -9,5 +9,6 @@ describe("Recommended Movies", () => {
   });
   it("should display Random Movies", () => {
     render(<RecomendedMovies />);
+    expect(screen.getAllByRole("img")).toHaveLength(5);
   });
 });

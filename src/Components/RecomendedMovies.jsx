@@ -4,6 +4,7 @@ import CaroselMovie from "./CaroselMovie";
 
 function RecomendedMovies() {
   const RandomMovies = [];
+  console.log(RandomMovies);
 
   for (let i = 0; i < 5; i++) {
     const RandomMovie = movies[Math.floor(Math.random() * movies.length)];

@@ -4,7 +4,8 @@
 .recommendedMovies {
   display: flex;
   flex-direction: column;
-  align-items: center;
   font-family: "Bebas Neue", sans-serif;
   width: 100%;
+  background-color: $background;
+  color: $fontColor;
 }
