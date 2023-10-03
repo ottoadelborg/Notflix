@@ -2,8 +2,10 @@ import movies from "../assets/movies.json";
 import "../Style/RecomendedMovies.scss";
 import { useState } from "react";
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
+import { useNavigate } from "react-router";
 
 function Recommended() {
+  const navigate = useNavigate();
   const RandomMovies = [];
   console.log(RandomMovies);
 
@@ -36,6 +38,9 @@ function Recommended() {
             key={idx}
             src={movie.thumbnail}
             alt=""
+            onClick={() => {
+              navigate("/Notflix/film-view", { state: { movie } });
+            }}
           />
         ))}
         <BsArrowRightCircleFill
