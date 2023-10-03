@@ -1,6 +1,8 @@
 import movies from "../assets/movies.json";
-import CaroselMovie from "./CaroselMovie";
 import "../Style/RecomendedMovies.scss";
+import "react-slideshow-image/dist/styles.css";
+import { Slide } from "react-slideshow-image";
+import "react-slideshow-image/dist/styles.css";
 
 function RecomendedMovies() {
   const RandomMovies = [];
@@ -13,11 +15,25 @@ function RecomendedMovies() {
 
   return (
     <section className="recommendedMovies">
-      <h1>Recommended Movies</h1>
-      <article className="recommendedMovies__carosel">
-        {RandomMovies.map((movie, index) => (
-          <CaroselMovie key={index} movie={movie} />
-        ))}
+      <h1 className="recommendedMovies__title">Recommended Movies</h1>
+      <article className="slide-container">
+        <Slide>
+          <div className="each-slide-effect">
+            <div
+              style={{ backgroundImage: `url(${RandomMovies[0].thumbnail})` }}
+            ></div>
+          </div>
+          <div className="each-slide-effect">
+            <div
+              style={{ backgroundImage: `url(${RandomMovies[1].thumbnail})` }}
+            ></div>
+          </div>
+          <div className="each-slide-effect">
+            <div
+              style={{ backgroundImage: `url(${RandomMovies[2].thumbnail})` }}
+            ></div>
+          </div>
+        </Slide>
       </article>
     </section>
   );
