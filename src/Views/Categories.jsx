@@ -1,4 +1,3 @@
-import Navbar from "../Components/Navbar";
 import { useState } from "react";
 import CategoryButtons from "../Components/CategoryButtons";
 import movies from "../assets/movies.json";
