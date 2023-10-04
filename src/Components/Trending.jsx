@@ -18,18 +18,19 @@ function Trending() {
   const [slide, setSlide] = useState(0);
 
   const nextSlide = () => {
-    setSlide(slide === movies.length - 1 ? 0 : slide + 1);
+    setSlide(slide === trendMovies.length - 1 ? 0 : slide + 1);
   };
   const previousSlide = () => {
-    setSlide(slide === 0 ? movies.length - 1 : slide - 1);
+    setSlide(slide === 0 ? trendMovies.length - 1 : slide - 1);
   };
 
   return (
     <article className="trending">
-      <h1 className="recommendedMovies__title">Trending Movies</h1>
+      <h1 className="trending__header">Trending Movies</h1>
 
       <div className="container">
         <BsArrowLeftCircleFill
+          data-testid="arrowLeft"
           className="arrow arrow-left"
           onClick={previousSlide}
         />
@@ -38,13 +39,14 @@ function Trending() {
             className={slide === idx ? "slide" : "slide slide-hidden"}
             key={idx}
             src={movie.thumbnail}
-            alt={`${movie.title} No image`}
+            alt={`No image: ${movie.title}`}
             onClick={() => {
               navigate("/Notflix/film-view", { state: { movie } });
             }}
           />
         ))}
         <BsArrowRightCircleFill
+          data-testid="arrowRight"
           className="arrow arrow-right"
           onClick={nextSlide}
         />

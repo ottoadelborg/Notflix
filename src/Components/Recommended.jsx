@@ -7,15 +7,19 @@ import { useNavigate } from "react-router";
 function Recommended() {
   const navigate = useNavigate();
 
+  function shuffle() {
+    RandomMovies.sort(() => Math.random() - 0.5);
+  }
+
   const RandomMovies = [];
 
-  for (let i = 0; i < 3; i++) {
-    const RandomMovie = movies[Math.floor(Math.random() * movies.length)];
-
-    if (!RandomMovie.isTrending) {
-      RandomMovies.push(RandomMovie);
+  movies.forEach((movie) => {
+    if (!movie.isTrending) {
+      RandomMovies.push(movie);
     }
-  }
+  });
+
+  shuffle();
 
   const [slide, setSlide] = useState(0);
 
@@ -37,13 +41,12 @@ function Recommended() {
           onClick={previousSlide}
         />
         {RandomMovies.map((movie, idx) => {
-          console.log(movie.thumbnail, "movie");
           return (
             <img
               className={slide === idx ? "slide" : "slide slide-hidden"}
               key={idx}
               src={movie.thumbnail}
-              alt={movie.title}
+              alt={`No Image found: ${movie.title}`}
               onClick={() => {
                 navigate("/Notflix/film-view", { state: { movie } });
               }}
@@ -51,24 +54,10 @@ function Recommended() {
           );
         })}
         <BsArrowRightCircleFill
+          data-testid="arrowRight"
           className="arrow arrow-right"
           onClick={nextSlide}
         />
-        <span className={"indicators"}>
-          {RandomMovies.map((_, idx) => {
-            return (
-              <button
-                key={idx}
-                onClick={() => {
-                  setSlide(idx);
-                }}
-                className={
-                  slide === idx ? " indicator" : " indicator indicator-inactive"
-                }
-              ></button>
-            );
-          })}
-        </span>
       </div>
     </section>
   );
