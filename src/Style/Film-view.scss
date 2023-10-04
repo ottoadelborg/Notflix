@@ -40,6 +40,22 @@
   margin-bottom: 2rem;
 }
 
+.filmview__noFilm {
+  text-align: center;
+}
+
+.filmview__text {
+  font-family: "Hind Vadodara", sans-serif;
+  font-size: 30px;
+}
+
+.filmview__link {
+  text-decoration: none;
+  color: $fontColor;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 25px;
+}
+
 @media only screen and (max-width: 700px) {
   .filmview__img {
     display: flex;

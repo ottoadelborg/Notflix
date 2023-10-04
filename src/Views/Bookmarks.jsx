@@ -1,5 +1,5 @@
 import Navbar from "../Components/Navbar";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "../Style/Bookmarks.scss";
 
 function Bookmarks() {
