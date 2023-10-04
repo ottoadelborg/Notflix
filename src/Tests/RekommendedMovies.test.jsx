@@ -37,6 +37,7 @@ describe("Recommended Movies", () => {
     const movies = screen.getAllByRole("img");
     expect(movies[0]).toHaveClass("slide");
     await user.click(arrowButton);
+
     expect(movies[1]).toHaveClass("slide");
     expect(movies[0]).toHaveClass("slide slide-hidden");
   });
@@ -55,6 +56,7 @@ describe("Recommended Movies", () => {
     const movies = screen.getAllByRole("img");
     expect(movies[0]).toHaveClass("slide");
     await user.click(arrowButton);
+
     expect(movies[1]).toHaveClass("slide");
   });
 });
