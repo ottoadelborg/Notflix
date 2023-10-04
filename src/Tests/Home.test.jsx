@@ -27,7 +27,7 @@ describe("Navbar", () => {
     expect(homeLink).toBeInTheDocument();
 
     <MemoryRouter initialEntries={["Notflix/"]} initialIndex={0}>
-      <Link to="../Notflix/bookmark">Bookmarks</Link>
+      <Link to="../Notflix/bookmarks">Bookmarks</Link>
       <Route path="Notflix/bookmarks">{Bookmarks}</Route>
     </MemoryRouter>;
 

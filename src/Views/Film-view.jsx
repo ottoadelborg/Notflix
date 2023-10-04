@@ -26,38 +26,43 @@ function FilmView() {
   return (
     <section>
       <Navbar />
-      <section className="filmview">
-        <section className="filmview__img">
-          <img
-            className="filmview__poster"
-            src={state.movie.thumbnail}
-            alt={state.movie.title}
-          />
-          <section className="filmview__details">
-            <h2 className="filmview__title">{state.movie.title}</h2>
-            <h3>{state.movie.year}</h3>
-            <p>
-              <strong>Rating:</strong> {state.movie.rating}
-            </p>
-            <p>
-              <strong>Genre:</strong> {state.movie.genre}
-            </p>
-            <p>
-              <strong>Actors:</strong> {state.movie.actors.join(", ")}
-            </p>
-            <p>
-              <strong>Synopsis:</strong> {state.movie.synopsis}
-            </p>
-            <button
-              className="add-button"
-              onClick={saveToLocalStorage}
-              data-testID="add-favorite"
-            >
-              Add to favourite
-            </button>
+      {state ? (
+        <section className="filmview">
+          <section className="filmview__img">
+            <img
+              className="filmview__poster"
+              src={state.movie.thumbnail}
+              alt={state.movie.title}
+            />
+            <section className="filmview__details">
+              <h2 className="filmview__title">{state.movie.title}</h2>
+              <h3>{state.movie.year}</h3>
+              <p>
+                <strong>Rating:</strong> {state.movie.rating}
+              </p>
+              <p>
+                <strong>Genre:</strong> {state.movie.genre}
+              </p>
+              <p>
+                <strong>Actors:</strong> {state.movie.actors.join(", ")}
+              </p>
+              <p>
+                <strong>Synopsis:</strong> {state.movie.synopsis}
+              </p>
+              <button onClick={saveToLocalStorage} data-testID="add-favorite">
+                Save to Local Storage
+              </button>
+            </section>
           </section>
         </section>
-      </section>
+      ) : (
+        <section className="filmview__noFilm">
+          <p className="filmview__text">No movie here!</p>
+          <a href="/Notflix/" className="filmview__link">
+            Back to Home
+          </a>
+        </section>
+      )}
     </section>
   );
 }
