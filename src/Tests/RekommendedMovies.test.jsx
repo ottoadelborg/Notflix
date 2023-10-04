@@ -3,7 +3,6 @@ import { describe, it, expect } from "vitest";
 import Recommended from "../Components/Recommended";
 import { BrowserRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
-import App from "../App";
 
 describe("Recommended Movies", () => {
   it("should display header", () => {
@@ -14,7 +13,7 @@ describe("Recommended Movies", () => {
     );
     expect(screen.getByText("Recommended Movies")).toBeInTheDocument();
   });
-  it("should display Random Movies", () => {
+  it("should display Movies", () => {
     render(
       <BrowserRouter>
         <Recommended />
@@ -22,14 +21,19 @@ describe("Recommended Movies", () => {
     );
     expect(screen.getAllByRole("img")).toHaveLength(3);
   });
-  it("should display next movie on arrow click", () => {
+  it("should display next movie on arrow click", async () => {
     render(
       <BrowserRouter>
         <Recommended />
       </BrowserRouter>
     );
+    screen.debug();
+    const user = userEvent.setup();
+    const arrowButton = screen.getByTestId("arrowLeft");
+    expect(arrowButton).toBeInTheDocument();
 
-    //const user = userEvent.setup();
-    // const movie = screen.getByRole("button", {name: //i});
+    await user.click(arrowButton);
+    const movie = screen.getAllByRole("img");
+    // expect(screen.findByAltText(movie[1])).toBeInTheDocument();
   });
 });

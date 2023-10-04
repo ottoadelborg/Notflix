@@ -5,8 +5,6 @@ import { useState } from "react";
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 import { useNavigate } from "react-router";
 
-// sortera bot filmer som finns i trending
-
 function Recommended() {
   const navigate = useNavigate();
 
@@ -17,6 +15,7 @@ function Recommended() {
     const RandomMovie = movies[Math.floor(Math.random() * movies.length)];
     RandomMovies.push(RandomMovie);
   }
+  // sortera bot filmer som finns i trending
   // om randommovies. title === trending movies.title remove.
 
   const [slide, setSlide] = useState(0);
@@ -34,6 +33,7 @@ function Recommended() {
 
       <div className="container">
         <BsArrowLeftCircleFill
+          data-testid="arrowLeft"
           className="arrow arrow-left"
           onClick={previousSlide}
         />
