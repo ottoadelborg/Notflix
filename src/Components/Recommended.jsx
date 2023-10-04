@@ -37,7 +37,7 @@ function Recommended() {
             className={slide === idx ? "slide" : "slide slide-hidden"}
             key={idx}
             src={movie.thumbnail}
-            alt=""
+            alt={movie.title}
             onClick={() => {
               navigate("/Notflix/film-view", { state: { movie } });
             }}
