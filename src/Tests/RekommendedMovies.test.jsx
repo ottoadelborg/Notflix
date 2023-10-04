@@ -22,4 +22,14 @@ describe("Recommended Movies", () => {
     );
     expect(screen.getAllByRole("img")).toHaveLength(3);
   });
+  it("should display next movie on arrow click", () => {
+    render(
+      <BrowserRouter>
+        <Recommended />
+      </BrowserRouter>
+    );
+
+    //const user = userEvent.setup();
+    // const movie = screen.getByRole("button", {name: //i});
+  });
 });
