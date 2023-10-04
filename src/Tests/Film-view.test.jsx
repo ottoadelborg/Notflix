@@ -10,7 +10,6 @@ describe("Filmview", () => {
         <FilmView />
       </BrowserRouter>
     );
-
     expect(screen.getByText("No movie here!")).toBeInTheDocument();
   });
 });
