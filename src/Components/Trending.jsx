@@ -18,48 +18,44 @@ function Trending() {
 
   return (
     <article className="trending">
-      <section className="recommendedMovies">
-        <h1 className="recommendedMovies__title">Trending Movies</h1>
+      <h1 className="recommendedMovies__title">Trending Movies</h1>
 
-        <div className="container">
-          <BsArrowLeftCircleFill
-            className="arrow arrow-left"
-            onClick={previousSlide}
+      <div className="container">
+        <BsArrowLeftCircleFill
+          className="arrow arrow-left"
+          onClick={previousSlide}
+        />
+        {trending.map((movie, idx) => (
+          <img
+            className={slide === idx ? "slide" : "slide slide-hidden"}
+            key={idx}
+            src={movie.thumbnail}
+            alt={movie.title}
+            onClick={() => {
+              navigate("/Notflix/film-view", { state: { movie } });
+            }}
           />
-          {trending.map((movie, idx) => (
-            <img
-              className={slide === idx ? "slide" : "slide slide-hidden"}
-              key={idx}
-              src={movie.thumbnail}
-              alt={movie.title}
-              onClick={() => {
-                navigate("/Notflix/film-view", { state: { movie } });
-              }}
-            />
-          ))}
-          <BsArrowRightCircleFill
-            className="arrow arrow-right"
-            onClick={nextSlide}
-          />
-          <span className={"indicators"}>
-            {trending.map((_, idx) => {
-              return (
-                <button
-                  key={idx}
-                  onClick={() => {
-                    setSlide(idx);
-                  }}
-                  className={
-                    slide === idx
-                      ? " indicator"
-                      : " indicator indicator-inactive"
-                  }
-                ></button>
-              );
-            })}
-          </span>
-        </div>
-      </section>
+        ))}
+        <BsArrowRightCircleFill
+          className="arrow arrow-right"
+          onClick={nextSlide}
+        />
+        <span className={"indicators"}>
+          {trending.map((_, idx) => {
+            return (
+              <button
+                key={idx}
+                onClick={() => {
+                  setSlide(idx);
+                }}
+                className={
+                  slide === idx ? " indicator" : " indicator indicator-inactive"
+                }
+              ></button>
+            );
+          })}
+        </span>
+      </div>
     </article>
   );
 }
