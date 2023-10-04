@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
 import Recommended from "../Components/Recommended";
 import { BrowserRouter } from "react-router-dom";
+
 //import userEvent from "@testing-library/user-event";
 
 describe("Recommended Movies", () => {

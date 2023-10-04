@@ -4,6 +4,8 @@ import { useState } from "react";
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 import { useNavigate } from "react-router";
 
+// sortera bot filmer som finns i trending
+
 function Recommended() {
   const navigate = useNavigate();
   const RandomMovies = [];
