@@ -5,7 +5,7 @@ import Navbar from "../Components/Navbar";
 import { useNavigate } from "react-router-dom";
 
 function Categories() {
-  const [filmCategory, setFilmCategory] = useState("Drama");
+  const [filmCategory, setFilmCategory] = useState("");
   const [genre, setGenre] = useState([]);
   const navigate = useNavigate();
 
@@ -30,8 +30,7 @@ function Categories() {
       <button
         key={index}
         className="button"
-        onClick={() => setFilmCategory(gen)}
-      >
+        onClick={() => setFilmCategory(gen)}>
         {gen}
       </button>
     );
@@ -47,8 +46,7 @@ function Categories() {
           className="movie-show"
           onClick={() => {
             navigate("/Notflix/film-view", { state: { movie } });
-          }}
-        >
+          }}>
           <img src={movie.thumbnail} alt="No img exist" />
           <p> {movie.title}</p>
         </div>
