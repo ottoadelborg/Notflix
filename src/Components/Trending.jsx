@@ -1,4 +1,4 @@
-import trending from "../assets/trending.json";
+import movies from "../assets/movies.json";
 import "../Style/Trending.scss";
 import "../Style/RecomendedMovies.scss";
 import { useState } from "react";
@@ -6,14 +6,22 @@ import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 import { useNavigate } from "react-router";
 
 function Trending() {
+  const trendMovies = [];
+
+  movies.forEach((movie) => {
+    if (movie.isTrending) {
+      trendMovies.push(movie);
+    }
+  });
+
   const navigate = useNavigate();
   const [slide, setSlide] = useState(0);
 
   const nextSlide = () => {
-    setSlide(slide === trending.length - 1 ? 0 : slide + 1);
+    setSlide(slide === movies.length - 1 ? 0 : slide + 1);
   };
   const previousSlide = () => {
-    setSlide(slide === 0 ? trending.length - 1 : slide - 1);
+    setSlide(slide === 0 ? movies.length - 1 : slide - 1);
   };
 
   return (
@@ -25,12 +33,12 @@ function Trending() {
           className="arrow arrow-left"
           onClick={previousSlide}
         />
-        {trending.map((movie, idx) => (
+        {trendMovies.map((movie, idx) => (
           <img
             className={slide === idx ? "slide" : "slide slide-hidden"}
             key={idx}
             src={movie.thumbnail}
-            alt={movie.title}
+            alt={`${movie.title} No image`}
             onClick={() => {
               navigate("/Notflix/film-view", { state: { movie } });
             }}
@@ -40,21 +48,6 @@ function Trending() {
           className="arrow arrow-right"
           onClick={nextSlide}
         />
-        <span className={"indicators"}>
-          {trending.map((_, idx) => {
-            return (
-              <button
-                key={idx}
-                onClick={() => {
-                  setSlide(idx);
-                }}
-                className={
-                  slide === idx ? " indicator" : " indicator indicator-inactive"
-                }
-              ></button>
-            );
-          })}
-        </span>
       </div>
     </article>
   );
