@@ -29,8 +29,13 @@ function MovieInput() {
             setSearchMovie(e.target.value);
           }}
           className="search--movie__input"
+          data-testid="movie-search"
         />
-        <button className="search--movie__button" onClick={handleClick}>
+        <button
+          className="search--movie__button"
+          onClick={handleClick}
+          data-testid="search-button"
+        >
           <FaSearch className="search--button" />
         </button>
       </div>
@@ -40,11 +45,13 @@ function MovieInput() {
           onClick={() => {
             navigate("/Notflix/film-view", { state: { movie: data[0] } });
           }}
+          data-testID="movie"
         >
           <img
             src={data[0].thumbnail}
             alt="Hittar ingen bild"
             className="movie--card"
+            data-testID="movie-picture"
           />
           <p className="movie--title">{data[0].title}</p>
         </div>

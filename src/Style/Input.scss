@@ -18,6 +18,7 @@
   padding-left: 1rem;
   font-family: "Hind Vadodara", sans-serif;
 }
+
 input[type="text"],
 textarea {
   background-color: white;
@@ -60,4 +61,8 @@ textarea {
 
 .input--container {
   padding-bottom: 1.5rem;
+}
+
+.search--button {
+  background-color: #06bcc1;
 }
