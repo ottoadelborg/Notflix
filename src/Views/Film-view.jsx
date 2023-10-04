@@ -48,7 +48,9 @@ function FilmView() {
             <p>
               <strong>Synopsis:</strong> {state.movie.synopsis}
             </p>
-            <button onClick={saveToLocalStorage}>Save to Local Storage</button>
+            <button className="add-button" onClick={saveToLocalStorage}>
+              Add to favourite
+            </button>
           </section>
         </section>
       </section>
