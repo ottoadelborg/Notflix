@@ -1,0 +1,29 @@
+[
+  {
+    "title": "The Dark Knight",
+    "year": 2008,
+    "rating": "PG-13",
+    "actors": ["Christian Bale", "Heath Ledger", "Aaron Eckhart"],
+    "genre": "Action, Crime, Drama",
+    "synopsis": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+    "thumbnail": "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SY1000_CR0,0,675,1000_AL_.jpg"
+  },
+  {
+    "title": "12 Angry Men",
+    "year": 1957,
+    "rating": "Not Rated",
+    "actors": ["Henry Fonda", "Lee J. Cobb", "Martin Balsam"],
+    "genre": "Crime, Drama",
+    "synopsis": "The jury in a New York City murder trial is frustrated by a single member whose skeptical caution forces them to more carefully consider the evidence before jumping to a hasty verdict.",
+    "thumbnail": "https://m.media-amazon.com/images/M/MV5BMWU4N2FjNzYtNTVkNC00NzQ0LTg0MjAtYTJlMjFhNGUxZDFmXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_SY1000_CR0,0,675,1000_AL_.jpg"
+  },
+  {
+    "title": "Schindler's List",
+    "year": 1993,
+    "rating": "R",
+    "actors": ["Liam Neeson", "Ralph Fiennes", "Ben Kingsley"],
+    "genre": "Biography, Drama, History",
+    "synopsis": "In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.",
+    "thumbnail": "https://m.media-amazon.com/images/M/MV5BNDE4OTMxMTctNmRhYy00NWE2LTg3YzItYTk3M2UwOTU5Njg4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SY1000_CR0,0,675,1000_AL_.jpg"
+  }
+]
