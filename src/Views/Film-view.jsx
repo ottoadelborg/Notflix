@@ -1,7 +1,6 @@
 import Navbar from "../Components/Navbar";
 import "../Style/Film-view.scss";
 import { useLocation } from "react-router-dom";
-import { Link } from "react-router-dom";
 
 function FilmView() {
   const { state } = useLocation();
