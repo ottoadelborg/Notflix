@@ -1,5 +1,4 @@
 import movies from "../assets/movies.json";
-import trending from "../assets/trending.json";
 import "../Style/RecomendedMovies.scss";
 import { useState } from "react";
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
@@ -9,14 +8,14 @@ function Recommended() {
   const navigate = useNavigate();
 
   const RandomMovies = [];
-  console.log(RandomMovies);
 
   for (let i = 0; i < 3; i++) {
     const RandomMovie = movies[Math.floor(Math.random() * movies.length)];
-    RandomMovies.push(RandomMovie);
+
+    if (!RandomMovie.isTrending) {
+      RandomMovies.push(RandomMovie);
+    }
   }
-  // sortera bot filmer som finns i trending
-  // om randommovies. title === trending movies.title remove.
 
   const [slide, setSlide] = useState(0);
 
@@ -37,17 +36,20 @@ function Recommended() {
           className="arrow arrow-left"
           onClick={previousSlide}
         />
-        {RandomMovies.map((movie, idx) => (
-          <img
-            className={slide === idx ? "slide" : "slide slide-hidden"}
-            key={idx}
-            src={movie.thumbnail}
-            alt={movie.title}
-            onClick={() => {
-              navigate("/Notflix/film-view", { state: { movie } });
-            }}
-          />
-        ))}
+        {RandomMovies.map((movie, idx) => {
+          console.log(movie.thumbnail, "movie");
+          return (
+            <img
+              className={slide === idx ? "slide" : "slide slide-hidden"}
+              key={idx}
+              src={movie.thumbnail}
+              alt={movie.title}
+              onClick={() => {
+                navigate("/Notflix/film-view", { state: { movie } });
+              }}
+            />
+          );
+        })}
         <BsArrowRightCircleFill
           className="arrow arrow-right"
           onClick={nextSlide}
