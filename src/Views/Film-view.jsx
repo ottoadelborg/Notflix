@@ -5,18 +5,34 @@ import { useLocation } from "react-router-dom";
 function FilmView() {
   const { state } = useLocation();
 
+  const saveToLocalStorage = () => {
+    try {
+      const existingMovies =
+        JSON.parse(localStorage.getItem("savedMovies")) || [];
+
+      if (existingMovies.some((movie) => movie.title === state.movie.title)) {
+        console.log("Movie already saved");
+        return;
+      }
+
+      existingMovies.push(state.movie);
+
+      localStorage.setItem("savedMovies", JSON.stringify(existingMovies));
+    } catch (e) {
+      console.error("Failed to save the movie to local storage.", e);
+    }
+  };
+
   return (
     <section>
       <Navbar />
       <section className="filmview">
         <section className="filmview__img">
-          {
-            <img
-              className="filmview__poster"
-              src={state.movie.thumbnail}
-              alt={state.movie.title}
-            />
-          }
+          <img
+            className="filmview__poster"
+            src={state.movie.thumbnail}
+            alt={state.movie.title}
+          />
           <section className="filmview__details">
             <h2 className="filmview__title">{state.movie.title}</h2>
             <h3>{state.movie.year}</h3>
@@ -27,12 +43,12 @@ function FilmView() {
               <strong>Genre:</strong> {state.movie.genre}
             </p>
             <p>
-              {" "}
-              <strong>Actors:</strong> {state.movie.actors.join(", ")}{" "}
+              <strong>Actors:</strong> {state.movie.actors.join(", ")}
             </p>
             <p>
               <strong>Synopsis:</strong> {state.movie.synopsis}
             </p>
+            <button onClick={saveToLocalStorage}>Save to Local Storage</button>
           </section>
         </section>
       </section>
