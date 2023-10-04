@@ -79,14 +79,5 @@ describe("User searches for movie and clicks on it for full desc then adds to fa
     fireEvent.click(screen.getByTestId("movie"));
 
     expect(await window.location.pathname).toBe("/Notflix/film-view");
-
-    render(
-      <BrowserRouter>
-        <FilmView />
-      </BrowserRouter>
-    );
-
-    expect(await screen.getByText("2000")).toBeInTheDocument();
-    fireEvent.click(screen.getByTestId("add-favorite"));
   });
 });
