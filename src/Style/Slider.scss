@@ -1,0 +1,67 @@
+@import "./variables";
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  min-width: 170px;
+  max-width: 200px;
+  position: relative;
+  box-shadow: 1px 1px 1px 1px $fontColor;
+}
+.article-info {
+  position: relative;
+}
+.slide {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.infoText {
+  position: absolute;
+  bottom: 1rem;
+  padding: 0.3rem;
+  border-radius: 3px;
+}
+
+.infoText-hidden {
+  display: none;
+}
+
+.btn {
+  color: $fontColor;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  margin: 0.5rem;
+}
+.btn-hidden {
+  display: none;
+}
+
+.slide-hidden {
+  display: none;
+}
+
+.arrow {
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  color: white;
+  filter: drop-shadow(0px 0px 5px #555);
+  border-radius: 50%;
+}
+
+.arrow:hover {
+  cursor: pointer;
+}
+
+.arrow-left {
+  left: 1rem;
+}
+
+.arrow-right {
+  right: 1rem;
+}

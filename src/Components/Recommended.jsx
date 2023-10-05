@@ -1,16 +1,12 @@
 import movies from "../assets/movies.json";
 import "../Style/RecomendedMovies.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 import { useNavigate } from "react-router";
+import Slider from "./Slider";
 
 function Recommended() {
   const navigate = useNavigate();
-
-  function shuffle() {
-    RandomMovies.sort(() => Math.random() - 0.5);
-  }
-
   const RandomMovies = [];
 
   movies.forEach((movie) => {
@@ -18,7 +14,9 @@ function Recommended() {
       RandomMovies.push(movie);
     }
   });
-
+  function shuffle() {
+    RandomMovies.sort(() => Math.random() - 0.5);
+  }
   shuffle();
 
   const [slide, setSlide] = useState(0);
@@ -41,17 +39,7 @@ function Recommended() {
           onClick={previousSlide}
         />
         {RandomMovies.map((movie, idx) => {
-          return (
-            <img
-              className={slide === idx ? "slide" : "slide slide-hidden"}
-              key={idx}
-              src={movie.thumbnail}
-              alt={`No Image found: ${movie.title}`}
-              onClick={() => {
-                navigate("/Notflix/film-view", { state: { movie } });
-              }}
-            />
-          );
+          return <Slider key={idx} movie={movie} slide={slide} idx={idx} />;
         })}
         <BsArrowRightCircleFill
           data-testid="arrowRight"

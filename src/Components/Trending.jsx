@@ -4,6 +4,7 @@ import "../Style/RecomendedMovies.scss";
 import { useState } from "react";
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 import { useNavigate } from "react-router";
+import Slider from "./Slider";
 
 function Trending() {
   const trendMovies = [];
@@ -24,6 +25,12 @@ function Trending() {
     setSlide(slide === 0 ? trendMovies.length - 1 : slide - 1);
   };
 
+  const placeholderImg =
+    "https://www.jaipuriaschoolpatna.in/wp-content/uploads/2016/11/blank-img.jpg";
+  const onImageError = (e) => {
+    e.target.src = placeholderImg;
+  };
+
   return (
     <article className="trending">
       <h1 className="trending__header">Trending Movies</h1>
@@ -35,15 +42,7 @@ function Trending() {
           onClick={previousSlide}
         />
         {trendMovies.map((movie, idx) => (
-          <img
-            className={slide === idx ? "slide" : "slide slide-hidden"}
-            key={idx}
-            src={movie.thumbnail}
-            alt={`No image: ${movie.title}`}
-            onClick={() => {
-              navigate("/Notflix/film-view", { state: { movie } });
-            }}
-          />
+          <Slider key={idx} movie={movie} slide={slide} idx={idx} />
         ))}
         <BsArrowRightCircleFill
           data-testid="arrowRight"
