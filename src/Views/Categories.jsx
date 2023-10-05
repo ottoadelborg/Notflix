@@ -36,8 +36,6 @@ function Categories() {
     );
   });
 
-  console.log(genre);
-
   const content = movies?.map((movie, idx) => {
     if (movie.genre.includes(filmCategory)) {
       return (
