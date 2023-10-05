@@ -1,4 +1,3 @@
-//import "../Style/RecomendedMovies.scss";
 import "../Style/Slider.scss";
 import { useNavigate } from "react-router";
 
