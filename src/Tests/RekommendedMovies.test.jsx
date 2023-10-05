@@ -3,6 +3,7 @@ import { describe, it, expect } from "vitest";
 import Recommended from "../Components/Recommended";
 import { BrowserRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
+import FilmView from "../Views/Film-view";
 
 describe("Recommended Movies", () => {
   it("should display header", () => {
@@ -48,7 +49,6 @@ describe("Recommended Movies", () => {
         <Recommended />
       </BrowserRouter>
     );
-    screen.debug();
     const user = userEvent.setup();
     const arrowButton = screen.getByTestId("arrowRight");
     expect(arrowButton).toBeInTheDocument();
@@ -56,7 +56,31 @@ describe("Recommended Movies", () => {
     const movies = screen.getAllByRole("img");
     expect(movies[0]).toHaveClass("slide");
     await user.click(arrowButton);
-
+    expect(movies[0]).toHaveClass("slide-hidden");
     expect(movies[1]).toHaveClass("slide");
+  });
+
+  it("should display film view on click movie img", async () => {
+    render(
+      <BrowserRouter>
+        <Recommended />
+      </BrowserRouter>
+    );
+    screen.debug();
+
+    const user = userEvent.setup();
+    const movies = screen.getAllByRole("img");
+
+    await user.click(movies[0]);
+    expect(window.location.pathname).toBe("/Notflix/film-view");
+
+    render(
+      <BrowserRouter>
+        <FilmView />
+      </BrowserRouter>
+    );
+    expect(screen.getByText("Genre:")).toBeInTheDocument();
+    expect(screen.getByText("Actors:")).toBeInTheDocument();
+    expect(screen.getByText("Synopsis:")).toBeInTheDocument();
   });
 });
