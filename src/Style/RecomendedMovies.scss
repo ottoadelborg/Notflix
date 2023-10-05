@@ -11,51 +11,9 @@
   color: $fontColor;
   padding-bottom: 1rem;
   margin: 1rem;
-}
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  //width: 400px;
-  height: 300px;
-  position: relative;
-}
-.slide {
-  width: 100%;
-  height: 100%;
-}
-.slide-hidden {
-  display: none;
-}
-.arrow {
-  position: absolute;
-  width: 2rem;
-  height: 2rem;
-  color: white;
-}
-.arrow:hover {
-  cursor: pointer;
-}
-.arrow-left {
-  left: 1rem;
-}
-.arrow-right {
-  right: 1rem;
-}
-.indicators {
-  display: flex;
-  position: absolute;
-  bottom: 1rem;
-}
-.indicator {
-  background-color: white;
-  height: 0.5rem;
-  width: 0.5rem;
-  border: none;
-  outline: none;
-  margin: 0 0.2rem;
-  cursor: pointer;
-}
-.indicator-inactive {
-  background-color: grey;
+
+  &__title {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    text-shadow: 1px 1px 1px black;
+  }
 }

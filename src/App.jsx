@@ -24,6 +24,7 @@ function App() {
       path: "Notflix/film-view",
       element: <FilmView />,
     },
+
     {
       path: "*",
       element: <Home />,
