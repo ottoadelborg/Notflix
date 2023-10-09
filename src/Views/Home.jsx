@@ -1,8 +1,8 @@
 import Input from "../Components/Input";
 import Navbar from "../Components/Navbar";
 import Trending from "../Components/Trending";
-import "../Style/Input.scss";
 import Recommended from "../Components/Recommended";
+import "../Style/Input.scss";
 import "../Style/Home.scss";
 import ".././assets/notflix.png";
 
