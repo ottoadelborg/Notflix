@@ -23,6 +23,21 @@ function FilmView() {
     }
   };
 
+  const removeMovie = () => {
+    try {
+      const existingMovies =
+        JSON.parse(localStorage.getItem("savedMovies")) || [];
+
+      const updatedMovies = existingMovies.filter(
+        (movie) => movie.title !== state.movie.title
+      );
+
+      localStorage.setItem("savedMovies", JSON.stringify(updatedMovies));
+    } catch (e) {
+      console.error("Failed to remove the movie from local storage.", e);
+    }
+  };
+
   return (
     <section>
       <Navbar />
@@ -49,8 +64,11 @@ function FilmView() {
               <p>
                 <strong>Synopsis:</strong> {state.movie.synopsis}
               </p>
-              <button className="add-button" onClick={saveToLocalStorage} data-testID="add-favorite">
-                Save to Local Storage
+              <button onClick={saveToLocalStorage} data-testid="add-favorite">
+                Add to Bookmarks
+              </button>
+              <button className="remove-button" onClick={removeMovie}>
+                Remove
               </button>
             </section>
           </section>
