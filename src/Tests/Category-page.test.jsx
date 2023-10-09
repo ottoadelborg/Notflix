@@ -19,6 +19,7 @@ describe("Categories-Page", () => {
     expect(ActionBtn).toBeInTheDocument();
     await userEvent.click(ActionBtn);
     const film = await screen.getByText("The Dark Knight");
+
     expect(await screen.findByText("The Dark Knight"));
     await userEvent.click(film);
     expect(await window.location.pathname).toBe("/Notflix/film-view");
