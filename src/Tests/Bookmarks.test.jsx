@@ -5,7 +5,6 @@ import Categories from "../Views/Categories";
 import { BrowserRouter } from "react-router-dom";
 import { describe, it, expect } from "vitest";
 import Bookmarks from "../Views/Bookmarks";
-import { MemoryRouter, Route, Link } from "react-router-dom";
 
 describe("navigate to film-view", () => {
   it("should navigate from categories to film-view, and click add to favourite, then render the selected movie", async () => {
@@ -23,16 +22,24 @@ describe("navigate to film-view", () => {
         <FilmView />
       </BrowserRouter>
     );
+
     await screen.findByText("1994");
 
-    userEvent.click(screen.getByTestId("add-favorite"));
+    await userEvent.click(screen.getByTestId("add-favorite"));
+    render(
+      <BrowserRouter>
+        <Bookmarks />
+      </BrowserRouter>
+    );
+  });
 
-    <MemoryRouter initialEntries={["Notflix/film-view"]}>
-      <Link to="../Notflix/bookmarks">Bookmarks</Link>
-      <Route path="Notflix/bookmarks">{Bookmarks}</Route>
-    </MemoryRouter>;
-
-    screen.findByText("Remove");
-    screen.findByText("The Shawshank Redemption");
+  it("should remove a movie from favourites", async () => {
+    render(
+      <BrowserRouter>
+        <Bookmarks />
+      </BrowserRouter>
+    );
+    await screen.getByText("Remove");
+    await userEvent.click(screen.getByTestId("delete-button"));
   });
 });
