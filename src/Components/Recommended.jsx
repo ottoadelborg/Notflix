@@ -1,12 +1,10 @@
 import movies from "../assets/movies.json";
 import "../Style/RecomendedMovies.scss";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
-import { useNavigate } from "react-router";
 import Slider from "./Slider";
 
 function Recommended() {
-  const navigate = useNavigate();
   const RandomMovies = [];
 
   movies.forEach((movie) => {
@@ -14,9 +12,9 @@ function Recommended() {
       RandomMovies.push(movie);
     }
   });
-  function shuffle() {
+  const shuffle = () => {
     RandomMovies.sort(() => Math.random() - 0.5);
-  }
+  };
   shuffle();
 
   const [slide, setSlide] = useState(0);

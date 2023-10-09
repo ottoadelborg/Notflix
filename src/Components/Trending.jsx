@@ -3,7 +3,6 @@ import "../Style/Trending.scss";
 import "../Style/RecomendedMovies.scss";
 import { useState } from "react";
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
-import { useNavigate } from "react-router";
 import Slider from "./Slider";
 
 function Trending() {
@@ -15,7 +14,6 @@ function Trending() {
     }
   });
 
-  const navigate = useNavigate();
   const [slide, setSlide] = useState(0);
 
   const nextSlide = () => {
@@ -24,13 +22,6 @@ function Trending() {
   const previousSlide = () => {
     setSlide(slide === 0 ? trendMovies.length - 1 : slide - 1);
   };
-
-  const placeholderImg =
-    "https://www.jaipuriaschoolpatna.in/wp-content/uploads/2016/11/blank-img.jpg";
-  const onImageError = (e) => {
-    e.target.src = placeholderImg;
-  };
-
   return (
     <article className="trending">
       <h1 className="trending__header">Trending Movies</h1>
