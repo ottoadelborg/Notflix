@@ -23,14 +23,14 @@ describe("Movie should appear", () => {
       </BrowserRouter>
     );
 
-    const input = await screen.getByTestId("movie-search");
+    const input = screen.getByTestId("movie-search");
     fireEvent.click(screen.getByTestId("movie-search"));
     fireEvent.change(input, { target: { value: "Gladiator" } });
     expect(input.value).toBe("Gladiator");
 
     userEvent.click(screen.getByTestId("search-button"));
     await screen.findByText("Gladiator");
-    await screen.getByTestId("movie-picture");
+    screen.getByTestId("movie-picture");
   });
 });
 
@@ -42,7 +42,7 @@ describe("User searches for movie and clicks on it for full desc", () => {
       </BrowserRouter>
     );
 
-    const input = await screen.getByTestId("movie-search");
+    const input = screen.getByTestId("movie-search");
     fireEvent.click(screen.getByTestId("movie-search"));
     fireEvent.change(input, { target: { value: "Gladiator" } });
     expect(input.value).toBe("Gladiator");
@@ -50,7 +50,7 @@ describe("User searches for movie and clicks on it for full desc", () => {
     await screen.findByText("Gladiator");
     fireEvent.click(screen.getByTestId("movie"));
 
-    expect(await window.location.pathname).toBe("/Notflix/film-view");
+    expect(window.location.pathname).toBe("/Notflix/film-view");
 
     render(
       <BrowserRouter>
@@ -58,7 +58,7 @@ describe("User searches for movie and clicks on it for full desc", () => {
       </BrowserRouter>
     );
 
-    expect(await screen.getByText("2000")).toBeInTheDocument();
+    expect(screen.getByText("2000")).toBeInTheDocument();
   });
 });
 
