@@ -1,7 +1,7 @@
 import { FaSearch } from "react-icons/fa";
-import movies from "../assets/movies.json";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import movies from "../assets/movies.json";
 import "../Style/Input.scss";
 
 function MovieInput() {
@@ -18,6 +18,12 @@ function MovieInput() {
     setData(content);
   };
   console.log(data);
+
+  const saveToStorage = (movie) => {
+    const savedMovies = JSON.parse(localStorage.getItem("savedMovies")) || [];
+    savedMovies.push(movie);
+    localStorage.setItem("savedMovies", JSON.stringify(savedMovies));
+  };
 
   return (
     <div className="search--container">
@@ -40,20 +46,26 @@ function MovieInput() {
         </button>
       </div>
       {data[0]?.title ? (
-        <div
-          className="movie-show"
-          onClick={() => {
-            navigate("/Notflix/film-view", { state: { movie: data[0] } });
-          }}
-          data-testid="movie"
-        >
+        <div className="movie-show" data-testID="movie">
           <img
+            onClick={() => {
+              navigate("/Notflix/film-view", { state: { movie: data[0] } });
+            }}
             src={data[0].thumbnail}
             alt="Hittar ingen bild"
             className="movie--card"
             data-testid="movie-picture"
           />
           <p className="movie--title">{data[0].title}</p>
+          <hr className="hr-text gradient" />
+          <button
+            onClick={() => {
+              saveToStorage(data[0]);
+            }}
+            className="favorites--button"
+          >
+            Add to favorite
+          </button>
         </div>
       ) : null}
     </div>

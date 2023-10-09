@@ -77,12 +77,9 @@ function FilmView() {
               <button
                 className="add-button"
                 onClick={saveToLocalStorage}
-                data-testid="add-favorite"
+                data-testID="add-favorite"
               >
-                Add to Bookmarks
-              </button>
-              <button className="remove-button" onClick={removeMovie}>
-                Remove
+                Add to favourite
               </button>
             </section>
           </section>
