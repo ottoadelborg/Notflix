@@ -5,6 +5,13 @@ import "../Style/Bookmarks.scss";
 function Bookmarks() {
   const [movies, setMovies] = useState([]);
 
+  const placeholderImg =
+    "https://placehold.jp/30/3d4070/ffffff/380x562.png?text=No%20image";
+
+  const onImageError = (e) => {
+    e.target.src = placeholderImg;
+  };
+
   useEffect(() => {
     const savedMovies = JSON.parse(localStorage.getItem("savedMovies")) || [];
     setMovies(savedMovies);
@@ -28,8 +35,9 @@ function Bookmarks() {
           {movies.map((movie, index) => (
             <section key={index} className="bookmark">
               <img
-                src={movie.thumbnail}
+                src={movie.thumbnail ? movie.thumbnail : placeholderImg}
                 alt={movie.title}
+                onError={onImageError}
                 className="bookmark__poster"
               />
               <h2 className="bookmark__title">{movie.title}</h2>

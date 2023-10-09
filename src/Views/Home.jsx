@@ -11,7 +11,6 @@ function Home() {
     <div className="home">
       <img className="home__logo" src="src/assets/notflix.png" />
       <Navbar />
-
       <Input />
       <article className="home__article">
         <Recommended />
