@@ -6,8 +6,6 @@ import Categories from "../Views/Categories";
 import { BrowserRouter } from "react-router-dom";
 import { describe, it, expect } from "vitest";
 import Bookmarks from "../Views/Bookmarks";
-import { describe, it, expect } from "vitest";
-import Bookmarks from "../Views/Bookmarks";
 
 describe("navigate to film-view", () => {
   it("should navigate from categories to film-view, and click add to favourite, then render the selected movie", async () => {
