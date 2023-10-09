@@ -45,13 +45,13 @@ function MovieInput() {
           onClick={() => {
             navigate("/Notflix/film-view", { state: { movie: data[0] } });
           }}
-          data-testID="movie"
+          data-testid="movie"
         >
           <img
             src={data[0].thumbnail}
             alt="Hittar ingen bild"
             className="movie--card"
-            data-testID="movie-picture"
+            data-testid="movie-picture"
           />
           <p className="movie--title">{data[0].title}</p>
         </div>
