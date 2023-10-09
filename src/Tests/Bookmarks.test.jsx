@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import FilmView from "../Views/Film-view";
 import Categories from "../Views/Categories";
@@ -25,15 +25,17 @@ describe("navigate to film-view", () => {
     );
     await screen.findByText("1994");
 
-    userEvent.click(screen.getByTestId("add-favorite"));
+    await userEvent.click(screen.getByTestId("add-favorite"));
+    render(
+      <BrowserRouter>
+        <Bookmarks />
+      </BrowserRouter>
+    );
 
-    <MemoryRouter initialEntries={["Notflix/film-view"]}>
-      <Link to="../Notflix/bookmarks">Bookmarks</Link>
-      <Route path="Notflix/bookmarks">{Bookmarks}</Route>
-    </MemoryRouter>;
+    const test = await screen.getByText("Remove");
+    console.log(test, "log börjar här");
 
-    screen.findByText("Remove");
-    screen.findByText("The Shawshank Redemption");
+    screen.debug();
   });
   it("should remove a movie from favourites", async () => {
     render(
@@ -41,8 +43,7 @@ describe("navigate to film-view", () => {
         <Bookmarks />
       </BrowserRouter>
     );
-
-    screen.findByText("The Shawshank Redemption");
-    screen.findByText("Remove");
+    await screen.getByText("Remove");
+    await userEvent.click(screen.getByTestId("delete-button"));
   });
 });
