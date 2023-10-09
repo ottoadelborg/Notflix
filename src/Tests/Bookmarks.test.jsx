@@ -1,5 +1,4 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import FilmView from "../Views/Film-view";
 import Categories from "../Views/Categories";
@@ -32,11 +31,6 @@ describe("navigate to film-view", () => {
         <Bookmarks />
       </BrowserRouter>
     );
-
-    const test = await screen.getByText("Remove");
-    console.log(test, "log börjar här");
-
-    screen.debug();
   });
 
   it("should remove a movie from favourites", async () => {
