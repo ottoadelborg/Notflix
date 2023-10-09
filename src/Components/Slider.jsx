@@ -5,7 +5,8 @@ function Slider({ movie, slide, idx }) {
   const navigate = useNavigate();
 
   const placeholderImg =
-    "https://www.jaipuriaschoolpatna.in/wp-content/uploads/2016/11/blank-img.jpg";
+    "https://placehold.jp/30/3d4070/ffffff/380x562.png?text=No%20image";
+
   const onImageError = (e) => {
     e.target.src = placeholderImg;
   };
@@ -17,7 +18,9 @@ function Slider({ movie, slide, idx }) {
   };
 
   return (
-    <article className={slide === idx ? "slide" : "slide slide-hidden"}>
+    <article
+      className={slide === idx ? "slideArticle" : "slideArticle slide-hidden"}
+    >
       <img
         className={slide === idx ? "slide" : "slide slide-hidden"}
         src={movie.thumbnail ? movie.thumbnail : placeholderImg}
@@ -37,7 +40,7 @@ function Slider({ movie, slide, idx }) {
           className={slide === idx ? "btn" : "btn btn-hidden"}
           onClick={saveToStorage}
         >
-          Bookmark
+          Bookmark: {movie.title}
         </button>
       }
     </article>
