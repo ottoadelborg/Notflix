@@ -4,6 +4,7 @@ import Recommended from "../Components/Recommended";
 import { BrowserRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 import FilmView from "../Views/Film-view";
+import Bookmarks from "../Views/Bookmarks";
 
 describe("Recommended Movies", () => {
   it("should display header", () => {
@@ -66,7 +67,6 @@ describe("Recommended Movies", () => {
         <Recommended />
       </BrowserRouter>
     );
-    screen.debug();
 
     const user = userEvent.setup();
     const movies = screen.getAllByRole("img");
@@ -82,5 +82,26 @@ describe("Recommended Movies", () => {
     expect(screen.getByText("Genre:")).toBeInTheDocument();
     expect(screen.getByText("Actors:")).toBeInTheDocument();
     expect(screen.getByText("Synopsis:")).toBeInTheDocument();
+  });
+
+  it("should display bookemarked film on click bookmark button and nabigate to bookmarks", async () => {
+    render(
+      <BrowserRouter>
+        <Recommended />
+      </BrowserRouter>
+    );
+
+    const user = userEvent.setup();
+    const moviesBookMarkButton = screen.getAllByRole("button", {
+      name: /Bookmark:/i,
+    });
+    await user.click(moviesBookMarkButton[0]);
+
+    render(
+      <BrowserRouter>
+        <Bookmarks />
+      </BrowserRouter>
+    );
+    expect(screen.getByText("Remove"));
   });
 });
