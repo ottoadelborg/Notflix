@@ -23,8 +23,8 @@
 }
 
 .filmview__poster {
-  border-radius: 0.5rem;
-  border: 2px solid black;
+  border: solid #f4d1ae 1px;
+  border-radius: 5px;
   width: 45%;
 }
 
@@ -55,6 +55,37 @@
   color: $fontColor;
   font-family: "Bebas Neue", sans-serif;
   font-size: 25px;
+}
+
+.add-button {
+  border: solid 1px #f4d1ae;
+  background-color: #12263a;
+  color: #f4d1ae;
+  padding: 0.5rem;
+  font-family: "Hind Vadodara", sans-serif;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+.add-button:hover {
+  box-shadow: 0 6px 8px 0 #f4d1aec7, 0 4px 5px 0 #f4d1aec7;
+}
+.add-button:active {
+  transform: translateY(-3px);
+}
+
+.remove-button {
+  border: solid 1px #f4d1ae;
+  background-color: #12263a;
+  color: #f4d1ae;
+  padding: 0.5rem;
+  font-family: "Hind Vadodara", sans-serif;
+  cursor: pointer;
+}
+.remove-button:hover {
+  box-shadow: 0 6px 8px 0 #f4d1aec7, 0 4px 5px 0 #f4d1aec7;
+}
+.remove-button:active {
+  transform: translateY(-3px);
 }
 
 @media only screen and (max-width: 700px) {

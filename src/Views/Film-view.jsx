@@ -5,6 +5,13 @@ import { useLocation } from "react-router-dom";
 function FilmView() {
   const { state } = useLocation();
 
+  const placeholderImg =
+    "https://placehold.jp/30/3d4070/ffffff/380x562.png?text=No%20image";
+
+  const onImageError = (e) => {
+    e.target.src = placeholderImg;
+  };
+
   const saveToLocalStorage = () => {
     try {
       const existingMovies =
@@ -23,6 +30,21 @@ function FilmView() {
     }
   };
 
+  const removeMovie = () => {
+    try {
+      const existingMovies =
+        JSON.parse(localStorage.getItem("savedMovies")) || [];
+
+      const updatedMovies = existingMovies.filter(
+        (movie) => movie.title !== state.movie.title
+      );
+
+      localStorage.setItem("savedMovies", JSON.stringify(updatedMovies));
+    } catch (e) {
+      console.error("Failed to remove the movie from local storage.", e);
+    }
+  };
+
   return (
     <section>
       <Navbar />
@@ -31,8 +53,11 @@ function FilmView() {
           <section className="filmview__img">
             <img
               className="filmview__poster"
-              src={state.movie.thumbnail}
+              src={
+                state.movie.thumbnail ? state.movie.thumbnail : placeholderImg
+              }
               alt={state.movie.title}
+              onError={onImageError}
             />
             <section className="filmview__details">
               <h2 className="filmview__title">{state.movie.title}</h2>
@@ -49,8 +74,15 @@ function FilmView() {
               <p>
                 <strong>Synopsis:</strong> {state.movie.synopsis}
               </p>
-              <button className="add-button" onClick={saveToLocalStorage} data-testID="add-favorite">
-                Save to Local Storage
+              <button
+                className="add-button"
+                onClick={saveToLocalStorage}
+                data-testid="add-favorite"
+              >
+                Add to Bookmarks
+              </button>
+              <button className="remove-button" onClick={removeMovie}>
+                Remove
               </button>
             </section>
           </section>
