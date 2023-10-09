@@ -43,6 +43,7 @@ function Bookmarks() {
               <h2 className="bookmark__title">{movie.title}</h2>
 
               <button
+                data-testid="delete-button"
                 className="remove-button"
                 onClick={() => removeMovie(movie.title)}
               >
