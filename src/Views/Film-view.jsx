@@ -81,6 +81,13 @@ function FilmView() {
               >
                 Add to favourite
               </button>
+              <button
+                className="remove-button"
+                onClick={removeMovie}
+                data-testID="remove-favorite"
+              >
+                Remove from favorite
+              </button>
             </section>
           </section>
         </section>
