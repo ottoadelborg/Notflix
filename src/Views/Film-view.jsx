@@ -5,6 +5,13 @@ import { useLocation } from "react-router-dom";
 function FilmView() {
   const { state } = useLocation();
 
+  const placeholderImg =
+    "https://placehold.jp/30/3d4070/ffffff/380x562.png?text=No%20image";
+
+  const onImageError = (e) => {
+    e.target.src = placeholderImg;
+  };
+
   const saveToLocalStorage = () => {
     try {
       const existingMovies =
@@ -46,8 +53,11 @@ function FilmView() {
           <section className="filmview__img">
             <img
               className="filmview__poster"
-              src={state.movie.thumbnail}
+              src={
+                state.movie.thumbnail ? state.movie.thumbnail : placeholderImg
+              }
               alt={state.movie.title}
+              onError={onImageError}
             />
             <section className="filmview__details">
               <h2 className="filmview__title">{state.movie.title}</h2>
