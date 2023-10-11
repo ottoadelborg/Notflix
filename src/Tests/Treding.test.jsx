@@ -63,7 +63,7 @@ describe("Recommended Movies", () => {
     expect(movies[1]).toHaveClass("slide");
   });
 
-  it.only("should display film view on click movie img", async () => {
+  it("should display film view on click movie img", async () => {
     render(
       <MemoryRouter initialEntries={["/Notflix/"]}>
         <Routes>
