@@ -1,9 +1,11 @@
 import Navbar from "../Components/Navbar";
 import "../Style/Film-view.scss";
 import { useLocation } from "react-router-dom";
+import { useState } from "react";
 
 function FilmView() {
   const { state } = useLocation();
+  const [added, setAdded] = useState(true);
 
   const placeholderImg =
     "https://placehold.jp/30/3d4070/ffffff/380x562.png?text=No%20image";
@@ -25,23 +27,13 @@ function FilmView() {
       existingMovies.push(state.movie);
 
       localStorage.setItem("savedMovies", JSON.stringify(existingMovies));
+      existingMovies.forEach((m) => {
+        if (m.title === state.movie.title) {
+          setAdded(false);
+        }
+      });
     } catch (e) {
       console.error("Failed to save the movie to local storage.", e);
-    }
-  };
-
-  const removeMovie = () => {
-    try {
-      const existingMovies =
-        JSON.parse(localStorage.getItem("savedMovies")) || [];
-
-      const updatedMovies = existingMovies.filter(
-        (movie) => movie.title !== state.movie.title
-      );
-
-      localStorage.setItem("savedMovies", JSON.stringify(updatedMovies));
-    } catch (e) {
-      console.error("Failed to remove the movie from local storage.", e);
     }
   };
 
@@ -79,10 +71,7 @@ function FilmView() {
                 onClick={saveToLocalStorage}
                 data-testid="add-favorite"
               >
-                Add to Bookmarks
-              </button>
-              <button className="remove-button" onClick={removeMovie}>
-                Remove
+                {added ? "Add to Bookmark" : "Added"}
               </button>
             </section>
           </section>
