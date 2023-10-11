@@ -12,11 +12,14 @@ function Recommended() {
       RandomMovies.push(movie);
     }
   });
+
   const shuffle = () => {
     RandomMovies.sort(() => Math.random() - 0.5);
   };
+
   useEffect(() => {
     shuffle();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const [slide, setSlide] = useState(0);
