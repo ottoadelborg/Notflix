@@ -35,13 +35,12 @@ function MovieInput() {
             setSearchMovie(e.target.value);
           }}
           className="search--movie__input"
-          data-testid="movie-search"
+          role="movie-search"
         />
         <button
           className="search--movie__button"
           onClick={handleClick}
-          data-testid="search-button"
-        >
+          data-testid="search-button">
           <FaSearch className="search--button" />
         </button>
       </div>
@@ -54,7 +53,7 @@ function MovieInput() {
             src={data[0].thumbnail}
             alt="Hittar ingen bild"
             className="movie--card"
-            data-testid="movie-picture"
+            role="movie-picture"
           />
           <p className="movie--title">{data[0].title}</p>
           <hr className="hr-text gradient" />
@@ -62,8 +61,7 @@ function MovieInput() {
             onClick={() => {
               saveToStorage(data[0]);
             }}
-            className="favorites--button"
-          >
+            className="favorites--button">
             Add to favorite
           </button>
         </div>

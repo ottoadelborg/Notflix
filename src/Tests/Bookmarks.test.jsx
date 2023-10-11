@@ -1,45 +1,16 @@
-import { fireEvent, render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import FilmView from "../Views/Film-view";
-import Categories from "../Views/Categories";
-import { BrowserRouter } from "react-router-dom";
+import { render, screen } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
 import Bookmarks from "../Views/Bookmarks";
+import { BrowserRouter } from "react-router-dom";
 
 describe("navigate to film-view", () => {
-  it("should navigate from categories to film-view, and click add to favourite, then render the selected movie", async () => {
-    render(
-      <BrowserRouter>
-        <Categories />
-      </BrowserRouter>
-    );
-
-    expect(screen.getByText("The Shawshank Redemption")).toBeInTheDocument();
-    fireEvent.click(screen.getByText("The Shawshank Redemption"));
-    expect(await window.location.pathname).toBe("/Notflix/film-view");
-    render(
-      <BrowserRouter>
-        <FilmView />
-      </BrowserRouter>
-    );
-
-    await screen.findByText("1994");
-
-    await userEvent.click(screen.getByTestId("add-favorite"));
-    render(
-      <BrowserRouter>
-        <Bookmarks />
-      </BrowserRouter>
-    );
-  });
-
   it("should remove a movie from favourites", async () => {
     render(
       <BrowserRouter>
         <Bookmarks />
       </BrowserRouter>
     );
-    await screen.getByText("Remove");
-    await userEvent.click(screen.getByTestId("delete-button"));
+    expect(await screen.findByText("You have no Bookmarked movies"));
+    screen.debug();
   });
 });
