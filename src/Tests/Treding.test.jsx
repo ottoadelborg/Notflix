@@ -24,6 +24,7 @@ describe("Recommended Movies", () => {
         <Trending />
       </BrowserRouter>
     );
+
     expect(screen.getAllByRole("img")).toHaveLength(7);
   });
 
@@ -36,10 +37,13 @@ describe("Recommended Movies", () => {
 
     const user = userEvent.setup();
     const arrowButton = screen.getByTestId("arrowLeft");
+
     expect(arrowButton).toBeInTheDocument();
 
     const movies = screen.getAllByRole("img");
+
     expect(movies[0]).toHaveClass("slide");
+
     await user.click(arrowButton);
 
     expect(movies[1]).toHaveClass("slide");
@@ -52,14 +56,16 @@ describe("Recommended Movies", () => {
         <Trending />
       </BrowserRouter>
     );
-    screen.debug();
+
     const user = userEvent.setup();
     const arrowButton = screen.getByTestId("arrowRight");
+
     expect(arrowButton).toBeInTheDocument();
 
     const movies = screen.getAllByRole("img");
     expect(movies[0]).toHaveClass("slide");
     await user.click(arrowButton);
+
     expect(movies[1]).toHaveClass("slide");
   });
 
