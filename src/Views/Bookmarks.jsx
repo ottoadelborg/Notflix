@@ -32,25 +32,28 @@ function Bookmarks() {
       <Navbar />
       <section className="main-flex">
         <section className="bookmarks">
-          {movies.map((movie, index) => (
-            <section key={index} className="bookmark">
-              <img
-                src={movie.thumbnail ? movie.thumbnail : placeholderImg}
-                alt={movie.title}
-                onError={onImageError}
-                className="bookmark__poster"
-              />
-              <h2 className="bookmark__title">{movie.title}</h2>
+          {" "}
+          {movies.length > 0
+            ? movies.map((movie, index) => (
+                <section key={index} className="bookmark">
+                  <img
+                    src={movie.thumbnail ? movie.thumbnail : placeholderImg}
+                    alt={movie.title}
+                    onError={onImageError}
+                    className="bookmark__poster"
+                  />
+                  <h2 className="bookmark__title">{movie.title}</h2>
 
-              <button
-                data-testid="delete-button"
-                className="remove-button"
-                onClick={() => removeMovie(movie.title)}
-              >
-                Remove
-              </button>
-            </section>
-          ))}
+                  <button
+                    data-testid="delete-button"
+                    className="remove-button"
+                    onClick={() => removeMovie(movie.title)}
+                  >
+                    Remove
+                  </button>
+                </section>
+              ))
+            : "You have no Bookmarked movies"}
         </section>
       </section>
     </>

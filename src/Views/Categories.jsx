@@ -8,6 +8,7 @@ function Categories() {
   const [filmCategory, setFilmCategory] = useState("");
   const [genre, setGenre] = useState([]);
   const navigate = useNavigate();
+  const [added, setAdded] = useState(true);
 
   const placeholderImg =
     "https://placehold.jp/30/3d4070/ffffff/380x562.png?text=No%20image";
@@ -39,7 +40,8 @@ function Categories() {
       <button
         key={index}
         className="button"
-        onClick={() => setFilmCategory(gen)}>
+        onClick={() => setFilmCategory(gen)}
+      >
         {gen}
       </button>
     );
@@ -62,7 +64,8 @@ function Categories() {
           <p
             onClick={() => {
               navigate("/Notflix/film-view", { state: { movie } });
-            }}>
+            }}
+          >
             {" "}
             {movie.title}
           </p>
@@ -70,8 +73,9 @@ function Categories() {
             onClick={() => {
               saveToStorage(movie);
             }}
-            className="button">
-            Add to Bookmark
+            className="button"
+          >
+            {added ? "Add to Bookmark" : "Added"}
           </button>
         </div>
       );

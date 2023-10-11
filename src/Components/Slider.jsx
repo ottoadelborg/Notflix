@@ -1,8 +1,11 @@
 import "../Style/Slider.scss";
 import { useNavigate } from "react-router";
+import { useState } from "react";
 
 function Slider({ movie, slide, idx }) {
   const navigate = useNavigate();
+
+  const [added, setAdded] = useState(true);
 
   const placeholderImg =
     "https://placehold.jp/30/3d4070/ffffff/380x562.png?text=No%20image";
@@ -15,6 +18,12 @@ function Slider({ movie, slide, idx }) {
     const savedMovies = JSON.parse(localStorage.getItem("savedMovies")) || [];
     savedMovies.push(movie);
     localStorage.setItem("savedMovies", JSON.stringify(savedMovies));
+
+    savedMovies.forEach((m) => {
+      if (m.title === movie.title) {
+        setAdded(false);
+      }
+    });
   };
 
   return (
@@ -40,7 +49,7 @@ function Slider({ movie, slide, idx }) {
           className={slide === idx ? "btn" : "btn btn-hidden"}
           onClick={saveToStorage}
         >
-          Bookmark: {movie.title}
+          {added ? "Add to Bookmark" : "Added"}
         </button>
       }
     </article>

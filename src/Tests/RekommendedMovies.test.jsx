@@ -93,7 +93,7 @@ describe("Recommended Movies", () => {
 
     const user = userEvent.setup();
     const moviesBookMarkButton = screen.getAllByRole("button", {
-      name: /Bookmark:/i,
+      name: /Add to Bookmark/i,
     });
     await user.click(moviesBookMarkButton[0]);
 
