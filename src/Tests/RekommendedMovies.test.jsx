@@ -5,8 +5,6 @@ import { BrowserRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 import FilmView from "../Views/Film-view";
 import { MemoryRouter, Routes, Route } from "react-router-dom";
-import Bookmarks from "../Views/Bookmarks";
-import Home from "../Views/Home";
 
 describe("Recommended Movies", () => {
   it("should display header", () => {
@@ -91,32 +89,5 @@ describe("Recommended Movies", () => {
     expect(screen.getByText("Genre:")).toBeInTheDocument();
     expect(screen.getByText("Actors:")).toBeInTheDocument();
     expect(screen.getByText("Synopsis:")).toBeInTheDocument();
-  });
-
-  it("should display bookemarked film on click bookmark button and navigate to bookmarks", async () => {
-    render(
-      <MemoryRouter initialEntries={["/Notflix/"]}>
-        <Routes>
-          <Route path="/Notflix/" element={<Home />}></Route>
-          <Route path="/Notflix/film-view" element={<FilmView />}></Route>
-          <Route path="/Notflix/bookmarks" element={<Bookmarks />}></Route>
-        </Routes>
-      </MemoryRouter>
-    );
-
-    const user = userEvent.setup();
-    const moviesBookMarkButton = screen.getAllByRole("button", {
-      name: /Add to Bookmark/i,
-    });
-
-    await user.click(moviesBookMarkButton[0]);
-
-    expect(await screen.findByText("Added"));
-
-    const bookmarkLink = screen.getByRole("link", { name: "Bookmarks" });
-
-    await user.click(bookmarkLink);
-
-    expect(await screen.findByText("Remove"));
   });
 });

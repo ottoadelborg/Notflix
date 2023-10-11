@@ -8,7 +8,6 @@ function Categories() {
   const [filmCategory, setFilmCategory] = useState("");
   const [genre, setGenre] = useState([]);
   const navigate = useNavigate();
-  const [added, setAdded] = useState(true);
 
   const placeholderImg =
     "https://placehold.jp/30/3d4070/ffffff/380x562.png?text=No%20image";
@@ -75,7 +74,7 @@ function Categories() {
             }}
             className="button"
           >
-            {added ? "Add to Bookmark" : "Added"}
+            Add to Bookmark
           </button>
         </div>
       );
