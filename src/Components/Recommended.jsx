@@ -1,6 +1,6 @@
 import movies from "../assets/movies.json";
 import "../Style/RecomendedMovies.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 import Slider from "./Slider";
 
@@ -15,7 +15,9 @@ function Recommended() {
   const shuffle = () => {
     RandomMovies.sort(() => Math.random() - 0.5);
   };
-  shuffle();
+  useEffect(() => {
+    shuffle();
+  }, []);
 
   const [slide, setSlide] = useState(0);
 

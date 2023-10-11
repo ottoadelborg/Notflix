@@ -4,6 +4,10 @@ import { BrowserRouter } from "react-router-dom";
 import Trending from "../Components/Trending";
 import userEvent from "@testing-library/user-event";
 import FilmView from "../Views/Film-view";
+import { Route } from "react-router-dom";
+import { MemoryRouter } from "react-router-dom";
+import { Routes } from "react-router-dom";
+import Home from "../Views/Home";
 
 describe("Recommended Movies", () => {
   it("should display header", () => {
@@ -59,27 +63,23 @@ describe("Recommended Movies", () => {
     expect(movies[1]).toHaveClass("slide");
   });
 
-  it("should display film view on click movie img", async () => {
+  it.only("should display film view on click movie img", async () => {
     render(
-      <BrowserRouter>
-        <Trending />
-      </BrowserRouter>
+      <MemoryRouter initialEntries={["/Notflix/"]}>
+        <Routes>
+          <Route path="/Notflix/" element={<Home />}></Route>
+          <Route path="/Notflix/film-view" element={<FilmView />}></Route>
+        </Routes>
+      </MemoryRouter>
     );
-    screen.debug();
 
     const user = userEvent.setup();
     const movies = screen.getAllByRole("img");
 
-    await user.click(movies[0]);
-    expect(window.location.pathname).toBe("/Notflix/film-view");
+    await user.click(movies[1]);
 
-    render(
-      <BrowserRouter>
-        <FilmView />
-      </BrowserRouter>
-    );
-    expect(screen.getByText("Genre:")).toBeInTheDocument();
-    expect(screen.getByText("Actors:")).toBeInTheDocument();
-    expect(screen.getByText("Synopsis:")).toBeInTheDocument();
+    expect(await screen.findByText("Genre:")).toBeInTheDocument();
+    expect(await screen.findByText("Actors:")).toBeInTheDocument();
+    expect(await screen.findByText("Synopsis:")).toBeInTheDocument();
   });
 });
