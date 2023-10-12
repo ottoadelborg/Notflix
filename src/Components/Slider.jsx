@@ -61,6 +61,7 @@ function Slider({ movie, slide, idx }) {
         <button
           className={slide === idx ? "btn" : "btn btn-hidden"}
           onClick={saveToStorage}
+          data-testid="bookmark"
         >
           {added ? "Add to Bookmark" : "Added"}
         </button>
