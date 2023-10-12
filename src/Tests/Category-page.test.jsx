@@ -5,7 +5,6 @@ import { Routes, Route, MemoryRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 import FilmView from "../Views/Film-view";
 import Bookmarks from "../Views/Bookmarks";
-import Home from "../Views/Home";
 
 describe("Categories-Page", () => {
   it("should display Categorie", async () => {
@@ -54,6 +53,7 @@ describe("Categories-Page", () => {
     expect(
       await screen.findByText("The Shawshank Redemption")
     ).toBeInTheDocument();
+
     await userEvent.click(screen.getByTestId("delete-button"));
     expect(await screen.findByText("You have no Bookmarked movies"));
   });
