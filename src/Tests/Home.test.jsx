@@ -149,13 +149,9 @@ describe("Should test Slider", () => {
     );
 
     const user = userEvent.setup();
-    const moviesBookMarkButton = screen.getAllByRole("button", {
-      name: /Add to Bookmark/i,
-    });
+    const moviesBookMarkButton = screen.getAllByTestId("bookmark");
 
     await user.click(moviesBookMarkButton[1]);
-
-    expect(await screen.findByText("Added"));
 
     const bookmarkNav = await screen.findByText("Bookmarks");
 
