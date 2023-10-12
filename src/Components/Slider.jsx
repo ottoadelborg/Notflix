@@ -1,6 +1,6 @@
 import "../Style/Slider.scss";
 import { useNavigate } from "react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Slider({ movie, slide, idx }) {
   const navigate = useNavigate();
@@ -14,14 +14,27 @@ function Slider({ movie, slide, idx }) {
     e.target.src = placeholderImg;
   };
 
+  useEffect(() => {
+    const savedMovies = JSON.parse(localStorage.getItem("savedMovies")) || [];
+
+    savedMovies.forEach((m) => {
+      if (m.title === movie.title) {
+        setAdded(false);
+        console.log("finns i bookmark");
+      }
+    });
+  });
+
   const saveToStorage = () => {
     const savedMovies = JSON.parse(localStorage.getItem("savedMovies")) || [];
+
     savedMovies.push(movie);
     localStorage.setItem("savedMovies", JSON.stringify(savedMovies));
 
     savedMovies.forEach((m) => {
       if (m.title === movie.title) {
         setAdded(false);
+        console.log("finns i bookmark");
       }
     });
   };
